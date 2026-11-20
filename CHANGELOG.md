@@ -6,6 +6,8 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-11-20
+
 ### Added
 - Meta title / description templates for products and categories, with `{{attr:code}}` variables,
   automatic cleanup of empty variables and word-boundary length limits
@@ -16,3 +18,6 @@ All notable changes to this project are documented here. The format follows
 - Optional canonical from child simple products to their configurable parent
 - Admin configuration under Stores > Configuration > MeetMage > Advanced SEO Suite
 - Hyvä Tailwind registration
+
+[Unreleased]: https://github.com/meetmage-extensions/magento2-module-advanced-seo/compare/v1.0.0...HEAD
+[1.0.0]: https://github.com/meetmage-extensions/magento2-module-advanced-seo/releases/tag/v1.0.0
