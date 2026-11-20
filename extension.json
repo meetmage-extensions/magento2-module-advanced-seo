@@ -9,12 +9,36 @@
     "category": "seo-ai",
     "icon": "puzzle",
     "features": [
-        "Meta title & description templates with attribute variables",
-        "Organization, WebSite, Product and BreadcrumbList JSON-LD",
-        "Canonical URLs for CMS pages and the homepage",
-        "Configurable-parent canonical for child products",
-        "Works the same on Hyvä and Luma",
-        "Never overwrites merchant-entered meta values"
+        {
+            "icon": "file",
+            "title": "Meta title & description templates",
+            "text": "Separate templates for products and categories, with variables such as {{name}}, {{price}}, {{category}} and any attribute as {{attr:color}}."
+        },
+        {
+            "icon": "check",
+            "title": "Your own meta stays untouched",
+            "text": "Templates only fill empty fields. Meta titles and descriptions you wrote by hand are never replaced."
+        },
+        {
+            "icon": "code",
+            "title": "JSON-LD structured data",
+            "text": "Organization, WebSite with site search, Product with price and stock, and BreadcrumbList in one clean @graph block."
+        },
+        {
+            "icon": "link",
+            "title": "Clean canonical URLs",
+            "text": "CMS pages and the homepage get a canonical URL without tracking parameters, and only one canonical tag per page."
+        },
+        {
+            "icon": "layers",
+            "title": "Configurable-parent canonical",
+            "text": "Simple products that belong to a configurable product can point their canonical URL to the parent page."
+        },
+        {
+            "icon": "bolt",
+            "title": "Hyvä and Luma, no extra module",
+            "text": "Everything is rendered on the server, so it works the same on Hyvä and Luma without a compatibility module."
+        }
     ],
     "compatibility": {
         "magento": [
@@ -33,6 +57,7 @@
         "hyva": true,
         "hyvaVersion": ">=1.3.0"
     },
+    "testedOn": "2.4.9",
     "tags": [
         "seo",
         "meta-tags",
@@ -41,7 +66,7 @@
         "canonical",
         "hyva"
     ],
-    "screenshots": [],
+    "images": [],
     "documentation": "https://github.com/meetmage-extensions/magento2-module-advanced-seo#readme",
     "status": "released"
 }
