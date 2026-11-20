@@ -2,9 +2,12 @@
 
 Smart meta templates, structured data and canonical URL control for Magento 2, with Hyvä and Luma support.
 
-> **Status:** v1.0 in development, not released on Packagist yet.
+> **Latest release:** [v1.0.0](https://github.com/meetmage-extensions/magento2-module-advanced-seo/releases/tag/v1.0.0)
+> (tested on Magento Open Source 2.4.9). Install it from
+> [Packagist](https://packagist.org/packages/meetmage/module-advanced-seo).
 
 [![CI](https://github.com/meetmage-extensions/magento2-module-advanced-seo/actions/workflows/ci.yml/badge.svg)](https://github.com/meetmage-extensions/magento2-module-advanced-seo/actions/workflows/ci.yml)
+[![Packagist](https://img.shields.io/packagist/v/meetmage/module-advanced-seo.svg)](https://packagist.org/packages/meetmage/module-advanced-seo)
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Features
