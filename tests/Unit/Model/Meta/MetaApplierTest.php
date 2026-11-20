@@ -11,6 +11,7 @@ use MeetMage\AdvancedSeo\Model\Config;
 use MeetMage\AdvancedSeo\Model\Meta\MetaApplier;
 use MeetMage\AdvancedSeo\Model\Meta\TemplateRenderer;
 use MeetMage\AdvancedSeo\Model\Meta\VariableProvider;
+use MeetMage\AdvancedSeo\Model\ProductCategoryResolver;
 use PHPUnit\Framework\TestCase;
 
 class MetaApplierTest extends TestCase
@@ -46,7 +47,10 @@ class MetaApplierTest extends TestCase
         $pageConfig->expects($this->once())->method('setMetaTitle')->with('Trail Shoe | Shoe Shop');
         $pageConfig->expects($this->never())->method('setDescription');
 
-        (new MetaApplier($config, $registry, $pageConfig, new TemplateRenderer(), $variables))
+        $categoryResolver = $this->createMock(ProductCategoryResolver::class);
+        $categoryResolver->method('getCategory')->with($product)->willReturn(null);
+
+        (new MetaApplier($config, $registry, $pageConfig, new TemplateRenderer(), $variables, $categoryResolver))
             ->apply('catalog_product_view');
     }
 
@@ -60,7 +64,8 @@ class MetaApplierTest extends TestCase
             $registry,
             $this->createMock(PageConfig::class),
             new TemplateRenderer(),
-            $this->createMock(VariableProvider::class)
+            $this->createMock(VariableProvider::class),
+            $this->createMock(ProductCategoryResolver::class)
         ))->apply('checkout_cart_index');
     }
 }

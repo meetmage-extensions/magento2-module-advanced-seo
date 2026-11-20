@@ -8,6 +8,7 @@ use Magento\Catalog\Model\Product;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Page\Config as PageConfig;
 use MeetMage\AdvancedSeo\Model\Config;
+use MeetMage\AdvancedSeo\Model\ProductCategoryResolver;
 
 /**
  * Applies the meta title / description templates to product and category pages.
@@ -43,24 +44,32 @@ class MetaApplier
     private VariableProvider $variableProvider;
 
     /**
+     * @var ProductCategoryResolver
+     */
+    private ProductCategoryResolver $categoryResolver;
+
+    /**
      * @param Config $config
      * @param Registry $registry
      * @param PageConfig $pageConfig
      * @param TemplateRenderer $renderer
      * @param VariableProvider $variableProvider
+     * @param ProductCategoryResolver $categoryResolver
      */
     public function __construct(
         Config $config,
         Registry $registry,
         PageConfig $pageConfig,
         TemplateRenderer $renderer,
-        VariableProvider $variableProvider
+        VariableProvider $variableProvider,
+        ProductCategoryResolver $categoryResolver
     ) {
         $this->config = $config;
         $this->registry = $registry;
         $this->pageConfig = $pageConfig;
         $this->renderer = $renderer;
         $this->variableProvider = $variableProvider;
+        $this->categoryResolver = $categoryResolver;
     }
 
     /**
@@ -97,10 +106,9 @@ class MetaApplier
             return;
         }
 
-        $category = $this->registry->registry('current_category');
         $variables = $this->variableProvider->forProduct(
             $product,
-            $category instanceof Category ? $category : null,
+            $this->categoryResolver->getCategory($product),
             $this->renderer->getAttributeCodes($titleTemplate . ' ' . $descriptionTemplate)
         );
         $this->setTitle($titleTemplate, $variables);

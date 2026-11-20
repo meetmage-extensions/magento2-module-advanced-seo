@@ -9,6 +9,7 @@ use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use MeetMage\AdvancedSeo\Model\Config;
+use MeetMage\AdvancedSeo\Model\ProductCategoryResolver;
 use MeetMage\AdvancedSeo\Model\StructuredData\BreadcrumbBuilder;
 use MeetMage\AdvancedSeo\Model\StructuredData\JsonLdEncoder;
 use MeetMage\AdvancedSeo\Model\StructuredData\OrganizationBuilder;
@@ -61,6 +62,11 @@ class StructuredData implements ArgumentInterface
     private LoggerInterface $logger;
 
     /**
+     * @var ProductCategoryResolver
+     */
+    private ProductCategoryResolver $categoryResolver;
+
+    /**
      * @param Config $config
      * @param HttpRequest $request
      * @param Registry $registry
@@ -69,6 +75,7 @@ class StructuredData implements ArgumentInterface
      * @param BreadcrumbBuilder $breadcrumbBuilder
      * @param JsonLdEncoder $encoder
      * @param LoggerInterface $logger
+     * @param ProductCategoryResolver $categoryResolver
      */
     public function __construct(
         Config $config,
@@ -78,8 +85,10 @@ class StructuredData implements ArgumentInterface
         ProductBuilder $productBuilder,
         BreadcrumbBuilder $breadcrumbBuilder,
         JsonLdEncoder $encoder,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        ProductCategoryResolver $categoryResolver
     ) {
+        $this->categoryResolver = $categoryResolver;
         $this->config = $config;
         $this->request = $request;
         $this->registry = $registry;
@@ -138,7 +147,10 @@ class StructuredData implements ArgumentInterface
                     $nodes[] = $this->productBuilder->build($product);
                 }
                 if ($this->config->isBreadcrumbsEnabled()) {
-                    $nodes[] = $this->breadcrumbBuilder->forProduct($product, $category);
+                    $nodes[] = $this->breadcrumbBuilder->forProduct(
+                        $product,
+                        $this->categoryResolver->getCategory($product)
+                    );
                 }
             }
         } elseif ($action === 'catalog_category_view' && $category && $this->config->isBreadcrumbsEnabled()) {

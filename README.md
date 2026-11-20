@@ -28,7 +28,8 @@ One server-rendered `@graph` in the page head, so it works the same on Hyvä and
 - **WebSite** with the store search as `SearchAction`.
 - **Product** on product pages: name, SKU, description, image, brand, GTIN and an `Offer` with the
   final price in the visitor's currency and stock status.
-- **BreadcrumbList** on category and product pages.
+- **BreadcrumbList** on category and product pages. Product pages opened directly (as search
+  engines do) use the product's deepest category, so the trail is never just Home > Product.
 
 Each type can be switched off, for example if your theme already outputs Product markup.
 

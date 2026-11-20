@@ -31,22 +31,28 @@ Empty variables and the separators around them are removed automatically.]]></co
                 <field id="product_title" translate="label comment" type="text" sortOrder="10"
                        showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Product Meta Title</label>
-                    <comment>Example: {{name}} by {{attr:manufacturer}} | {{price}}</comment>
+                    <!-- Field comments go through Magento's directive filter, which drops {{...}};
+                         the HTML entities keep the braces visible. -->
+                    <comment><![CDATA[Example: &#123;&#123;name&#125;&#125; by
+                        &#123;&#123;attr:manufacturer&#125;&#125; | &#123;&#123;price&#125;&#125;]]></comment>
                 </field>
                 <field id="product_description" translate="label comment" type="textarea" sortOrder="20"
                        showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Product Meta Description</label>
-                    <comment>Example: Buy {{name}} for {{price}}. {{short_description}}</comment>
+                    <comment><![CDATA[Example: Buy &#123;&#123;name&#125;&#125; for &#123;&#123;price&#125;&#125;.
+                        &#123;&#123;short_description&#125;&#125;]]></comment>
                 </field>
                 <field id="category_title" translate="label comment" type="text" sortOrder="30"
                        showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Category Meta Title</label>
-                    <comment>Example: {{name}} - {{parent}}</comment>
+                    <comment><![CDATA[Example: &#123;&#123;name&#125;&#125; -
+                        &#123;&#123;parent&#125;&#125;]]></comment>
                 </field>
                 <field id="category_description" translate="label comment" type="textarea" sortOrder="40"
                        showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Category Meta Description</label>
-                    <comment>Example: Shop {{name}} at {{store}}. {{description}}</comment>
+                    <comment><![CDATA[Example: Shop &#123;&#123;name&#125;&#125; at &#123;&#123;store&#125;&#125;.
+                        &#123;&#123;description&#125;&#125;]]></comment>
                 </field>
                 <field id="title_max_length" translate="label comment" type="text" sortOrder="50"
                        showInDefault="1" showInWebsite="1" showInStore="1">
