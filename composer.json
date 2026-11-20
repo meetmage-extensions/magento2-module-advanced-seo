@@ -1,0 +1,64 @@
+{
+    "name": "meetmage/module-advanced-seo",
+    "description": "Smart meta templates, structured data and canonical URL control for Magento 2, with Hyvä and Luma support.",
+    "type": "magento2-module",
+    "license": "MIT",
+    "keywords": [
+        "magento2",
+        "magento",
+        "adobe-commerce",
+        "hyva",
+        "advanced-seo"
+    ],
+    "authors": [
+        {
+            "name": "Meet Shekhat",
+            "email": "meetshekhat1988@gmail.com",
+            "homepage": "https://meetshekhat.com"
+        }
+    ],
+    "homepage": "https://github.com/meetmage-extensions/magento2-module-advanced-seo",
+    "support": {
+        "issues": "https://github.com/meetmage-extensions/magento2-module-advanced-seo/issues",
+        "source": "https://github.com/meetmage-extensions/magento2-module-advanced-seo"
+    },
+    "require": {
+        "php": "~8.1.0||~8.2.0||~8.3.0||~8.4.0||~8.5.0",
+        "magento/framework": "^103.0",
+        "magento/module-store": "*",
+        "magento/module-config": "*",
+        "magento/module-catalog": "*",
+        "magento/module-cms": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.5",
+        "phpstan/phpstan": "^1.12",
+        "bitexpert/phpstan-magento": "^0.32",
+        "phpstan/extension-installer": "^1.4"
+    },
+    "suggest": {
+        "hyva-themes/magento2-default-theme": "Hyvä storefront support (Tailwind sources are registered automatically)"
+    },
+    "autoload": {
+        "files": [
+            "src/registration.php"
+        ],
+        "psr-4": {
+            "MeetMage\\AdvancedSeo\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MeetMage\\AdvancedSeo\\Test\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "magento/composer-dependency-version-audit-plugin": false,
+            "magento/magento-composer-installer": false,
+            "phpstan/extension-installer": true,
+            "laminas/laminas-dependency-plugin": false
+        }
+    }
+}
