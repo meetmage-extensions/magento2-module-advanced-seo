@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- JSON-LD structured data, rendered in the page head (Hyvä and Luma) -->
+        <block name="meetmage.advancedseo.structured_data"
+               template="MeetMage_AdvancedSeo::structured-data.phtml"
+               ifconfig="meetmage_advancedseo/general/enabled">
+            <arguments>
+                <argument name="view_model" xsi:type="object">MeetMage\AdvancedSeo\ViewModel\StructuredData</argument>
+            </arguments>
+        </block>
+        <move element="meetmage.advancedseo.structured_data" destination="head.additional"/>
+    </body>
+</page>

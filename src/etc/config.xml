@@ -6,6 +6,21 @@
             <general>
                 <enabled>1</enabled>
             </general>
+            <meta>
+                <title_max_length>60</title_max_length>
+                <description_max_length>160</description_max_length>
+            </meta>
+            <structured_data>
+                <organization>1</organization>
+                <website>1</website>
+                <product>1</product>
+                <brand_attribute>manufacturer</brand_attribute>
+                <breadcrumbs>1</breadcrumbs>
+            </structured_data>
+            <canonical>
+                <cms_pages>1</cms_pages>
+                <configurable_parent>0</configurable_parent>
+            </canonical>
         </meetmage_advancedseo>
     </default>
 </config>

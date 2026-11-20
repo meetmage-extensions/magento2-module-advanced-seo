@@ -28,4 +28,25 @@ class ConfigTest extends TestCase
 
         $this->assertFalse((new Config($scopeConfig))->isEnabled());
     }
+
+    public function testSameAsKeepsOnlyHttpUrls(): void
+    {
+        $scopeConfig = $this->createMock(ScopeConfigInterface::class);
+        $scopeConfig->method('getValue')->willReturn(
+            "https://www.linkedin.com/company/shop\r\n\n  https://instagram.com/shop  \nnot a url\njavascript:alert(1)"
+        );
+
+        $this->assertSame(
+            ['https://www.linkedin.com/company/shop', 'https://instagram.com/shop'],
+            (new Config($scopeConfig))->getSameAs()
+        );
+    }
+
+    public function testMaxLengthsAreNeverNegative(): void
+    {
+        $scopeConfig = $this->createMock(ScopeConfigInterface::class);
+        $scopeConfig->method('getValue')->willReturn('-5');
+
+        $this->assertSame(0, (new Config($scopeConfig))->getTitleMaxLength());
+    }
 }

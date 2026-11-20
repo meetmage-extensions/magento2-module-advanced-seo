@@ -20,6 +20,131 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>
+            <group id="meta" translate="label comment" sortOrder="20"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Meta Templates</label>
+                <comment><![CDATA[Used only when a product or category has no meta title or description
+of its own. Leave a template empty to keep Magento's default.<br>
+Variables: {{name}}, {{store}}, {{description}}; products also {{sku}}, {{price}}, {{category}},
+{{short_description}} and any attribute as {{attr:color}}; categories also {{parent}}.<br>
+Empty variables and the separators around them are removed automatically.]]></comment>
+                <field id="product_title" translate="label comment" type="text" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Meta Title</label>
+                    <comment>Example: {{name}} by {{attr:manufacturer}} | {{price}}</comment>
+                </field>
+                <field id="product_description" translate="label comment" type="textarea" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product Meta Description</label>
+                    <comment>Example: Buy {{name}} for {{price}}. {{short_description}}</comment>
+                </field>
+                <field id="category_title" translate="label comment" type="text" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Category Meta Title</label>
+                    <comment>Example: {{name}} - {{parent}}</comment>
+                </field>
+                <field id="category_description" translate="label comment" type="textarea" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Category Meta Description</label>
+                    <comment>Example: Shop {{name}} at {{store}}. {{description}}</comment>
+                </field>
+                <field id="title_max_length" translate="label comment" type="text" sortOrder="50"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Title Max Length</label>
+                    <comment>Generated titles are cut at a word boundary. 0 = no limit.</comment>
+                    <validate>validate-digits</validate>
+                </field>
+                <field id="description_max_length" translate="label comment" type="text" sortOrder="60"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Description Max Length</label>
+                    <comment>0 = no limit.</comment>
+                    <validate>validate-digits</validate>
+                </field>
+            </group>
+            <group id="structured_data" translate="label comment" sortOrder="30"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Structured Data (JSON-LD)</label>
+                <comment>Rendered server-side in the page head, so it works the same on Hyvä and Luma.</comment>
+                <field id="organization" translate="label" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Organization</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="organization_name" translate="label comment" type="text" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Organization Name</label>
+                    <comment>Leave empty to use the store name.</comment>
+                    <depends>
+                        <field id="organization">1</field>
+                    </depends>
+                </field>
+                <field id="organization_logo" translate="label comment" type="text" sortOrder="30"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Organization Logo</label>
+                    <comment>Absolute URL, or a path inside pub/media (e.g. logo/default/logo.png).</comment>
+                    <depends>
+                        <field id="organization">1</field>
+                    </depends>
+                </field>
+                <field id="same_as" translate="label comment" type="textarea" sortOrder="40"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Social Profiles (sameAs)</label>
+                    <comment>One URL per line, e.g. your LinkedIn, Instagram or Facebook page.</comment>
+                    <depends>
+                        <field id="organization">1</field>
+                    </depends>
+                </field>
+                <field id="website" translate="label comment" type="select" sortOrder="50"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>WebSite with Site Search</label>
+                    <comment>Adds the store search as a SearchAction.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="product" translate="label comment" type="select" sortOrder="60"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Product</label>
+                    <comment>Turn off if your theme already outputs Product structured data.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="brand_attribute" translate="label comment" type="text" sortOrder="70"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Brand Attribute Code</label>
+                    <comment>Leave empty to omit the brand.</comment>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="gtin_attribute" translate="label comment" type="text" sortOrder="80"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>GTIN Attribute Code</label>
+                    <comment>Attribute holding the EAN / UPC / GTIN. Leave empty to omit.</comment>
+                    <depends>
+                        <field id="product">1</field>
+                    </depends>
+                </field>
+                <field id="breadcrumbs" translate="label" type="select" sortOrder="90"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Breadcrumbs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="canonical" translate="label" sortOrder="40"
+                   showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Canonical URLs</label>
+                <field id="cms_pages" translate="label comment" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>CMS Pages and Homepage</label>
+                    <comment>Adds a canonical URL without query parameters to CMS pages and the homepage.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="configurable_parent" translate="label comment" type="select" sortOrder="20"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Point Child Products to Their Configurable Parent</label>
+                    <comment>A simple product that is visible on its own but belongs to an enabled, visible
+configurable product uses the parent's URL as canonical, to avoid duplicate content.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
         </section>
     </system>
 </config>

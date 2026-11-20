@@ -2,14 +2,42 @@
 
 Smart meta templates, structured data and canonical URL control for Magento 2, with Hyvä and Luma support.
 
-> **Status:** in development, not released yet.
+> **Status:** v1.0 in development, not released on Packagist yet.
 
 [![CI](https://github.com/meetmage-extensions/magento2-module-advanced-seo/actions/workflows/ci.yml/badge.svg)](https://github.com/meetmage-extensions/magento2-module-advanced-seo/actions/workflows/ci.yml)
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Features
 
-- Coming in v1.0.0
+### Meta templates
+Fill in missing meta titles and descriptions for products and categories from templates such as
+`{{name}} by {{attr:manufacturer}} | {{price}}`.
+
+- Applied **only** when a product or category has no meta value of its own; merchant-entered values are never replaced.
+- Variables: `{{name}}`, `{{store}}`, `{{description}}`; products also `{{sku}}`, `{{price}}`, `{{category}}`,
+  `{{short_description}}` and any attribute as `{{attr:code}}` (option labels for select attributes);
+  categories also `{{parent}}`.
+- Empty variables and the separators around them are removed, so `{{name}} | {{attr:brand}} | {{store}}`
+  still reads well for products without a brand.
+- Titles and descriptions are cut at a word boundary (60 / 160 characters by default, configurable).
+
+### Structured data (JSON-LD)
+One server-rendered `@graph` in the page head, so it works the same on Hyvä and Luma:
+
+- **Organization** on every page: name, URL, logo and social profiles (`sameAs`).
+- **WebSite** with the store search as `SearchAction`.
+- **Product** on product pages: name, SKU, description, image, brand, GTIN and an `Offer` with the
+  final price in the visitor's currency and stock status.
+- **BreadcrumbList** on category and product pages.
+
+Each type can be switched off, for example if your theme already outputs Product markup.
+
+### Canonical URLs
+- Canonical URL for **CMS pages and the homepage**, without tracking parameters.
+- Optional: simple products that are visible on their own but belong to a configurable product use the
+  **parent's URL as canonical**, to avoid duplicate content.
+
+Magento's own product and category canonical settings (**Catalog → Search Engine Optimization**) keep working.
 
 ## Compatibility
 
@@ -29,15 +57,30 @@ bin/magento setup:upgrade
 bin/magento cache:flush
 ```
 
-On Hyvä stores, rebuild the theme CSS afterwards so the module's Tailwind classes are included.
-
 ## Configuration
 
-**Stores → Configuration → MeetMage → Advanced SEO Suite**
+**Stores → Configuration → MeetMage → Advanced SEO Suite** (default, website and store view scope)
 
-| Setting | Default | Description |
+| Group | Setting | Default |
 |---|---|---|
-| Enable | Yes | Turns the module on or off per store view |
+| General | Enable | Yes |
+| Meta Templates | Product / category meta title and description templates | Empty (Magento default) |
+| Meta Templates | Title / description max length | 60 / 160 |
+| Structured Data | Organization, WebSite, Product, Breadcrumbs | Yes |
+| Structured Data | Organization name / logo / social profiles | Store name / none / none |
+| Structured Data | Brand attribute / GTIN attribute | `manufacturer` / none |
+| Canonical URLs | CMS pages and homepage | Yes |
+| Canonical URLs | Point child products to their configurable parent | No |
+
+Check the result with Google's [Rich Results Test](https://search.google.com/test/rich-results).
+
+## How it works
+
+- Meta templates and canonical URLs are applied by a plugin on `Magento\Framework\View\Page\Config\Renderer`
+  just before the page head is rendered, after core controllers and blocks have set their values.
+- Structured data is a block in `head.additional` with a view model; values are JSON-encoded with
+  `<`, `>` and `&` escaped, so content can never break out of the script tag.
+- Errors are logged and never break the storefront.
 
 ## Development
 

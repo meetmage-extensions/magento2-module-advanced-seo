@@ -28,7 +28,8 @@
         "magento/module-store": "*",
         "magento/module-config": "*",
         "magento/module-catalog": "*",
-        "magento/module-cms": "*"
+        "magento/module-cms": "*",
+        "magento/module-configurable-product": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.5",

@@ -1,0 +1,13 @@
+<?php
+/**
+ * JSON-LD structured data for the current page (Hyvä and Luma).
+ *
+ * @var \Magento\Framework\View\Element\Template $block
+ * @var \MeetMage\AdvancedSeo\ViewModel\StructuredData $viewModel
+ */
+$viewModel = $block->getData('view_model');
+$json = $viewModel->getJson();
+?>
+<?php if ($json !== ''): ?>
+<script type="application/ld+json"><?= /* @noEscape */ $json ?></script>
+<?php endif; ?>

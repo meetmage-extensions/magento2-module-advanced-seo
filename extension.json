@@ -2,10 +2,17 @@
     "name": "Advanced SEO Suite",
     "slug": "advanced-seo",
     "description": "Smart meta templates, structured data and canonical URL control for Magento 2, with Hyvä and Luma support.",
-    "shortDescription": "Smart meta templates, structured data and canonical URL control for Magento 2, with Hyvä and Luma support.",
+    "shortDescription": "Meta templates, JSON-LD structured data and canonical URLs for Magento 2",
     "category": "seo-ai",
     "icon": "puzzle",
-    "features": [],
+    "features": [
+        "Meta title & description templates with attribute variables",
+        "Organization, WebSite, Product and BreadcrumbList JSON-LD",
+        "Canonical URLs for CMS pages and the homepage",
+        "Configurable-parent canonical for child products",
+        "Works the same on Hyvä and Luma",
+        "Never overwrites merchant-entered meta values"
+    ],
     "compatibility": {
         "magento": [
             "2.4.6",
@@ -23,8 +30,11 @@
         "hyvaVersion": ">=1.3.0"
     },
     "tags": [
-        "advanced-seo",
-        "magento2",
+        "seo",
+        "meta-tags",
+        "structured-data",
+        "json-ld",
+        "canonical",
         "hyva"
     ],
     "screenshots": [],
