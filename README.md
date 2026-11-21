@@ -2,6 +2,8 @@
 
 Smart meta templates, structured data and canonical URL control for Magento 2, with Hyvä and Luma support.
 
+![Advanced SEO Suite for Magento 2](docs/images/hero.webp)
+
 > **Latest release:** [v1.0.0](https://github.com/meetmage-extensions/magento2-module-advanced-seo/releases/tag/v1.0.0)
 > (tested on Magento Open Source 2.4.9). Install it from
 > [Packagist](https://packagist.org/packages/meetmage/module-advanced-seo).

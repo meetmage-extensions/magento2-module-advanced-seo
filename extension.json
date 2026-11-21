@@ -66,7 +66,28 @@
         "canonical",
         "hyva"
     ],
-    "images": [],
+    "images": [
+        {
+            "src": "docs/images/hero.webp",
+            "alt": "Advanced SEO Suite for Magento 2: better product page SEO with templates, structured data and canonicals"
+        },
+        {
+            "src": "docs/images/meta-templates.webp",
+            "alt": "Meta templates turn product data into clean search-result titles and descriptions"
+        },
+        {
+            "src": "docs/images/structured-data.webp",
+            "alt": "JSON-LD structured data feeds rich search results with price and rating details"
+        },
+        {
+            "src": "docs/images/canonical-urls.webp",
+            "alt": "Duplicate URLs point to one canonical page"
+        },
+        {
+            "src": "docs/images/hyva-luma.webp",
+            "alt": "One module that works on both Hyvä and Luma storefronts"
+        }
+    ],
     "documentation": "https://github.com/meetmage-extensions/magento2-module-advanced-seo#readme",
     "status": "released"
 }
