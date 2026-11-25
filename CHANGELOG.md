@@ -6,6 +6,11 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-11-25
+
+### Changed
+- Composer keywords for Packagist search (seo, meta-tags, structured-data, json-ld, schema-org, rich-results, canonical). No code changes.
+
 ## [1.0.0] - 2026-11-20
 
 ### Added

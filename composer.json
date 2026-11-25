@@ -8,7 +8,13 @@
         "magento",
         "adobe-commerce",
         "hyva",
-        "advanced-seo"
+        "seo",
+        "meta-tags",
+        "structured-data",
+        "json-ld",
+        "schema-org",
+        "rich-results",
+        "canonical"
     ],
     "authors": [
         {

@@ -1,7 +1,7 @@
 {
     "name": "Advanced SEO Suite",
     "slug": "advanced-seo",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "released": "2026-11-20",
     "packagist": "meetmage/module-advanced-seo",
     "description": "Smart meta templates, structured data and canonical URL control for Magento 2, with Hyvä and Luma support.",
